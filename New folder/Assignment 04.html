@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="../../scripts/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+</head>
+<body>
+
+    <script>
+    var module = angular.module('myapp', []);
+
+    module.service('userService', function(){
+      
+        this.Employee = [
+               { EmpId: '1', EmpName: 'Arun', Age: '24', Photo: 'emp1.jpg' },
+                { EmpId: '2', EmpName: 'Sagar', Age: '24', Photo: 'emp2.jpg' },
+                { EmpId: '3', EmpName: 'Nisha', Age: '24', Photo: 'emp3.jpg' },
+                { EmpId: '4', EmpName: 'Varun', Age: '24', Photo: 'emp4.jpg' },
+               { EmpId: '5', EmpName: 'Ana', Age: '24', Photo: 'emp5.jpg' }
+        ];
+    });
+
+    module.controller("MyController", function ($scope, userService) {
+        $scope.emp = userService.Employee;
+    });
+    </script>
+    <h2>Demo of Employee table using Custom Service</h2>
+    <div ng-controller="MyController">
+        <table border="1" align="center">
+            <thead>
+                <tr>
+                    <th colspan="4">Employee Details</th>
+                </tr>
+
+                <tr>
+                    <th>Emplyee ID</th>
+                    <th>Employee name</th>
+                    <th>Age</th>
+                    <th>Photo</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="n in emp">
+                <td>{{n.EmpId}}</td>
+                <td>{{n.EmpName}}</td>
+                <td>{{n.Age}}</td>
+                <td>{{n.Photo}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+</body>
+</html>
